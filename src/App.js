@@ -1,23 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { FaStar } from "react-icons/fa";
+import { useState } from "react";
 
-function App() {
+function App({ noOfStars = 5 }) {
+  const [rating, setRating] = useState(0);
+  const [hover, setHover] = useState(0);
+
+  function handleClick(getCurrentIndex) {
+    console.log(getCurrentIndex);
+    setRating(getCurrentIndex);
+  }
+
+  function handleMouseEnter(getCurrentIndex) {
+    console.log(getCurrentIndex);
+    setHover(getCurrentIndex);
+  }
+
+  function handleMouseLeave(getCurrentIndex) {
+    console.log(getCurrentIndex);
+    setHover(rating);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="star-rating">
+      {[...Array(noOfStars)].map((_, index) => {
+        index += 1;
+
+        return (
+          <FaStar
+            key={index}
+            size={40}
+            onClick={() => handleClick(index)}
+            onMouseEnter={() => handleMouseEnter(index)}
+            onMouseLeave={() => handleMouseLeave(index)}
+            className={index <= (hover || rating) ? "active" : "inactive"}
+          />
+        );
+      })}
     </div>
   );
 }
