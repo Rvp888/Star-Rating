@@ -22,7 +22,7 @@ function App({ noOfStars = 5 }) {
     <div className="container">
       <h1>Star Rating</h1>
       <div className="star-rating">
-        {[...Array(noOfStars)].map((_, index) => {
+        {[...Array(noOfStars)].map((star, index) => {
           index += 1;
 
           return (
