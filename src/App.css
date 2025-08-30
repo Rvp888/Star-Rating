@@ -1,3 +1,11 @@
+.container {
+  text-align: center;
+}
+
 .active {
-  color: yellow;
+  color: #ffdb00;
+}
+
+.inactive {
+  color: #000;
 }
